@@ -1,6 +1,6 @@
 import { openRouter } from "./openrouter"
 
-const FLASH = "minimax/minimax-m2.7"
+const FLASH = "google/gemini-3.1-flash-lite-preview"
 const IMG_MODEL = "google/gemini-3.1-flash-image-preview"
 
 function url(src: string) {
