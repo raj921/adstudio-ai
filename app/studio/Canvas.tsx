@@ -1,6 +1,8 @@
 "use client"
 
 import { useStore } from "@/lib/store"
+import { Button } from "@/components/ui/button"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 export function Canvas() {
   const { job } = useStore()
@@ -24,10 +26,19 @@ export function Canvas() {
         <img src={job.result} alt="Ad" className="w-full object-contain" />
       </div>
       <div className="absolute bottom-3 right-3 flex gap-2 opacity-0 transition-opacity group-hover:opacity-100">
-        <a href={job.result} download={`ad-${job.id}.png`} className="flex h-9 items-center gap-2 rounded-lg bg-black/60 px-3 text-xs font-semibold text-white backdrop-blur-sm hover:bg-black/80">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" /></svg>
-          Download
-        </a>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="ghost" asChild className="h-9 gap-2 rounded-lg bg-black/60 px-3 text-xs font-semibold text-white backdrop-blur-sm hover:bg-black/80">
+                <a href={job.result} download={`ad-${job.id}.png`}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" /></svg>
+                  Download
+                </a>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Save to your device</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
       {job.prompt && (
         <div className="mt-3 rounded-xl border border-white/[0.04] bg-[#111114]/60 px-4 py-3">

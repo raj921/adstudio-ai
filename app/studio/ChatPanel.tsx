@@ -2,6 +2,8 @@
 
 import { useRef, useState, useEffect } from "react"
 import { useStore } from "@/lib/store"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
 export function ChatPanel({ onRegen }: { onRegen: (p: string) => void }) {
@@ -69,10 +71,17 @@ export function ChatPanel({ onRegen }: { onRegen: (p: string) => void }) {
 
       <div className="border-t border-white/[0.04] p-2">
         <div className="flex items-center gap-2">
-          <input value={val} onChange={e => setVal(e.target.value)} onKeyDown={e => e.key === "Enter" && send()} placeholder="Make it warmer, add a headline..." disabled={busy} className="min-w-0 flex-1 bg-transparent px-2 py-1.5 text-xs text-[#f6f3f5] placeholder:text-[#949499]/40 focus:outline-none disabled:opacity-50" />
-          <button onClick={send} disabled={!val.trim() || busy} className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#ba9eff]/20 text-[#ba9eff] hover:bg-[#ba9eff]/30 disabled:opacity-30">
+          <Input
+            value={val}
+            onChange={e => setVal(e.target.value)}
+            onKeyDown={e => e.key === "Enter" && send()}
+            placeholder="Make it warmer, add a headline..."
+            disabled={busy}
+            className="h-8 border-0 bg-transparent text-xs text-[#f6f3f5] shadow-none placeholder:text-[#949499]/40 focus-visible:ring-0"
+          />
+          <Button variant="ghost" size="icon-sm" onClick={send} disabled={!val.trim() || busy} className="shrink-0 rounded-lg bg-[#ba9eff]/20 text-[#ba9eff] hover:bg-[#ba9eff]/30 disabled:opacity-30">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" /></svg>
-          </button>
+          </Button>
         </div>
       </div>
     </div>

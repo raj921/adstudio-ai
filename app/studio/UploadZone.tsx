@@ -4,6 +4,7 @@ import { useCallback, useState } from "react"
 import { useDropzone } from "react-dropzone"
 import { useStore } from "@/lib/store"
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import type { Analysis } from "@/types/studio"
 
 export function UploadZone() {
@@ -68,9 +69,9 @@ export function UploadZone() {
           )}
         </div>
         {err && <p className="mt-2 text-center text-xs text-red-400">{err}</p>}
-        <button onClick={clear} className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white/70 backdrop-blur-sm hover:bg-black/70 hover:text-white">
+        <Button variant="ghost" size="icon" onClick={clear} className="absolute top-3 right-3 rounded-full bg-black/50 text-white/70 backdrop-blur-sm hover:bg-black/70 hover:text-white">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
-        </button>
+        </Button>
       </div>
     )
   }
