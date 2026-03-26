@@ -1,7 +1,7 @@
 import { openRouter } from "./openrouter"
 
-const FLASH = "google/gemini-2.0-flash-001"
-const IMG_MODEL = "google/gemini-2.5-flash-image"
+const FLASH = "minimax/minimax-m2.7"
+const IMG_MODEL = "google/gemini-3.1-flash-image-preview"
 
 function url(src: string) {
   return src.startsWith("data:") ? src : `data:image/jpeg;base64,${src}`
